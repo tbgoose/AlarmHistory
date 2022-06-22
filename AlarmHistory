@@ -1,7 +1,7 @@
 blueprint:
   name: Alarm and History Blueprint
   description: Alarm and History card by Michel Jourdain
-  version: "1.2"
+  version: "1.0"
   type: card
   
   custom_cards:
