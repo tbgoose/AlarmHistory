@@ -1,0 +1,51 @@
+blueprint:
+  name: Alarm and History Blueprint
+  description: Alarm and History card by Michel Jourdain
+  version: "1.2"
+  type: card
+  
+  custom_cards:
+    - vertical-stack-in-card
+    - mushroom-alarm-control-panel-card
+    - logbook-card
+
+  input:
+  
+    01_Alarm_title:
+       name: Alarm name
+       description: The alarm name
+       type: text-field
+  
+    02_translate_history:
+       name: Translate history
+       description: Translate histrory
+       type: text-fiel
+
+    03_alarm_entity:
+       name: Alarm entity
+       description: The entity of the alarm
+       type: entity-picker
+       
+card:
+
+  type: custom:vertical-stack-in-card
+  title: $01_Alarm_title$
+  cards:
+    - type: custom:mushroom-alarm-control-panel-card
+      entity: alarm_control_panel.blink_cameras_interieures
+      states:
+        - armed_home
+        - armed_away
+      layout: horizontal
+      fill_container: true
+
+    - type: custom:logbook-card
+      entity: $03_alarm_entity$
+      title: $02_translate_history$
+      desc: true
+      max_items: 6
+      show:
+        separator: true
+      separator_style:
+        color: green
+        style: dashed
